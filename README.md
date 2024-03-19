@@ -59,7 +59,7 @@ List the pages of your app with brief descriptions. You can show this visually, 
 
 Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
 ![Pages: Home, PostDetails, CreateNewPost](./src/assets/images/pages-1.png)
-![Pages: CollectionCatogory, Login](./src/assets/images/pages-1.png)
+![Pages: CollectionCatogory, Login](./src/assets/images/pages-2.png)
 
 ### Data
 
