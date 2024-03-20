@@ -1,0 +1,30 @@
+@use './mixin' as *;
+@use './variable' as *;
+
+  // ----- Resets ----- //
+*{
+    padding: 0;
+    margin: 0;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+}
+  
+  li {
+    list-style-type: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+
+
+  // ----- Default Styles ----- //
+  body {
+    @include body-font-mobile;
+    @include tablet {
+        @include body-font-tablet;
+    }
+  }
+    

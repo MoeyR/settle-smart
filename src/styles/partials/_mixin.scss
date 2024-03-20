@@ -1,0 +1,109 @@
+@use './font' as *;
+@use './breakpoint' as *;
+@use './variable' as *;
+
+
+// ----- Flexbox Mixions ----- //
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin flex-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+// ----- Media Queries Mixions ------ //
+
+@mixin tablet {
+    @media (min-width: $tablet-breakpoint) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $desktop-breakpoint) {
+        @content;
+    }
+}
+
+
+
+// ----- Font Style Mixions ------ //
+
+// -- Desktop & Tablet Text --
+@mixin page-header-tablet {
+    font-family: 'Avenir-Next';
+    font-size: 2.06rem; //33px
+    line-height: 2.75rem; //44px
+}
+
+@mixin section-header-tablet {
+    font-family: 'Avenir-Next';
+    font-size: 0.75rem; //12px
+    line-height: 1.25rem; //20px
+}
+
+@mixin subheader-tablet {
+    font-family: 'Avenir-Next';
+    font-size: 0.88rem; //14px
+    line-height: 1.38rem; //22px
+    font-weight: 700;
+}
+
+@mixin body-font-tablet {
+    font-family: 'Avenir-Next';
+    font-size: 0.88rem; //14px
+    line-height: 1.38rem; //22px
+}
+
+@mixin labels-buttons-tablet {
+    font-family: 'Avenir-Next';
+    font-size: 0.75rem; //12px
+    line-height: 1.25rem; //20px
+    font-weight: 700;
+}
+
+
+// -- Mobile Text --
+@mixin page-header-mobile {
+    font-family: 'Avenir-Next';
+    font-size: 1.5rem; //24px
+    line-height: 2rem; //32px
+}
+
+@mixin section-header-mobile {
+    font-family: 'Avenir-Next';
+    font-size: 0.75rem; //12px
+    line-height: 1.25rem; //20px
+}
+
+@mixin subheader-mobile {
+    font-family: 'Avenir-Next';
+    font-size: 0.81rem;//13px
+    line-height: 1.13rem; //18px
+    font-weight: 700;
+}
+
+@mixin body-font-mobile {
+    font-family: 'Avenir-Next';
+    font-size: 0.81rem; //13px
+    line-height: 1.13rem; //18px
+}
+
+@mixin labels-buttons-mobile {
+    font-family: 'Avenir-Next';
+    font-size: 0.63rem; //10px
+    line-height: 1.25rem; //20px
+    font-weight: 700;
+}
+
+
+
+
+
+
+
