@@ -3,11 +3,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import PostDetails from './pages/PostDetails/PostDetails';
 import PostAdd from './pages/PostAdd/PostAdd';
+import Header from './components/Header/Header';
 
 function App() {
   return (
     <>
     <BrowserRouter>
+    <Header />
     <Routes>
       <Route path='/' element={<Home />}></Route>
       <Route path='/posts/:postId' element={<PostDetails />}></Route>

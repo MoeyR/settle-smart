@@ -1,0 +1,62 @@
+@use '../../styles/partials/mixin' as *;
+@use '../../styles/partials/variable' as *;
+@use '../../styles/partials/global' as *;
+
+.header{
+    background-color: black;
+    padding: $between-components-mobile 24px;
+    .logo-icon-wrap{
+        @include flex-space-between;
+    }
+    &__logo{
+        height: 67px;
+    }
+
+    &__user-icon{
+        background-image: url(../../assets/icons/user-icon.png);
+        background-size: cover;
+        background-position-y: -1px;
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+    }
+
+    &__add-icon{
+        height: 30px;
+        border-radius: 13px;
+    }
+
+    &__nav{
+        width: 100%;
+        margin-top: $between-components-mobile;
+        @include flex-space-between;
+        font-size: 18px;
+        font-weight: 600;
+        color: $mercury;
+        
+        .nav-list{
+            @include flex-space-between;
+            width: 80%;
+            align-items: center;
+            margin-left: 29px;
+
+            &__item-link{
+                &:hover{
+                    color: $white;
+                    cursor: pointer;
+                    border-bottom: 3px solid $dark-red;
+                }
+
+                &--active{
+                    color: $white;
+                    border-bottom: 3px solid $dark-red;
+                }
+            }
+        }
+    }
+    
+    &__add-link{
+        margin-right: 2px;
+    }
+    
+}
