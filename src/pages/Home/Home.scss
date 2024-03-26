@@ -1,0 +1,59 @@
+@use '../../styles/partials/mixin' as *;
+@use '../../styles/partials/variable' as *;
+@use '../..//styles/partials/global' as *;
+
+.posts{
+
+    &-list{
+        display: flex;
+
+        &__item{
+            margin: 16px;
+        }
+
+        .post-card{
+            width: 220px;
+            padding: 16px;
+            border: 1px solid $mercury;
+            border-radius: 5px;
+         
+            &__image{
+                width: 130px;
+                display: block;
+                margin: 0 auto;
+            }
+
+            &__title{
+                font-size: 16px;
+                font-weight: 700;
+                margin: 12px 0;
+            }
+
+            .username-collects-wrap{
+                @include flex-space-between;
+
+            }
+
+            &__username{
+                font-weight: 600;
+            }
+
+            .collect-icon-number-wrap{
+                display: flex;
+                align-items: center;
+            }
+
+            &__collect-icon{
+                width: 23px;
+                margin-right: 8px;
+            }
+
+            &__collect-number{
+                margin-top: 3px;
+                font-size: 13px;
+                font-weight: 600;
+            }
+        }
+
+    }
+}
