@@ -23,6 +23,15 @@ class SettleSmartApi {
             console.log(`GET post details request failed, ${error}`);
         }
     }
+
+    async getComments(id){
+        try {
+            const commentsResponse = await axios.get(`${this.baseUrl}/posts/${id}/comments`)
+            return commentsResponse.data;
+        } catch (error) {
+            console.log(`GET post comments request failed, ${error}`);
+        }
+    }
 }
 
 //Instantiate SettleSmartApi

@@ -1,0 +1,32 @@
+@use '../../styles/partials/mixin' as *;
+@use '../../styles/partials/variable' as *;
+@use '../..//styles/partials/global' as *;
+
+.post-details{
+    display: flex;
+    flex-direction: column;
+
+   
+    &__image{
+        width: 300px;
+        margin: 20px auto;
+        border-radius: 4px;
+    }
+
+    .title-content-wrap{
+        width: 70%;
+        margin: 10px auto; 
+    }
+
+    &__title{
+        font-size: 20px;
+        margin: 20px 0;
+    }
+
+
+    // Comments Section
+    .comments-section{
+        width: 70%;
+        margin: 20px auto;
+    }   
+}
