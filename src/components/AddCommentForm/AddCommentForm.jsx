@@ -6,7 +6,7 @@ import { useParams } from "react-router";
 import { apiClient } from "../../utils/settle-smart-api";
 
 function AddCommentForm({showUpdatedComments}) {
-    const params = useParams();
+  const params = useParams();
   const [userComment, setUserComment] = useState("");
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -47,8 +47,6 @@ function AddCommentForm({showUpdatedComments}) {
         }
     }
   };
-
-  
 
   return (
     <form className="add-comment">
