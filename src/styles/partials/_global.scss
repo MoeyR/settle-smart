@@ -27,4 +27,40 @@
         @include body-font-tablet;
     }
   }
+
+  .default-input {
+    height: 2.25rem;
+    width: 100%;
+    background-color: $white;
+    border: .0625rem solid $cloud;
+    border-radius: 1.25rem;
+    padding: .625rem 1rem;
+  
+    @include tablet {
+      height: 2.375rem;
+    }
+  
+    @include desktop {
+      height: 2.375rem;
+    }
+  
+    &:focus {
+      border-color: $dark-black;
+      outline: none;
+      border-color: $dark-black;
+  
+      &::placeholder {
+        color: $dark-black;
+      }
+    }
+  
+    &--error-state {
+      border-color: $bright-red;
+    }
+  }
+  
+  ::placeholder {
+    color: $slate;
+  }
+  
     

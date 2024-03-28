@@ -2,6 +2,9 @@ import { useParams } from 'react-router';
 import './PostDetails.scss';
 import { useEffect, useState } from 'react';
 import { apiClient } from '../../utils/settle-smart-api';
+import CommentList from '../../components/CommentList/CommentList';
+import userIcon from '../../assets/icons/user-icon.png';
+import commentIcon from '../../assets/icons/comment-plus.svg';
 
 function PostDetails(){
     const params = useParams();
@@ -27,8 +30,6 @@ function PostDetails(){
         fetchPostDetails();
     }, [params.postId])
 
-    console.log(comments);
-
     if (hasError) {
         return (
           <p>Unable to access post details right now. Please try again later.</p>
@@ -49,15 +50,12 @@ function PostDetails(){
             {/* Comments Section */}
             <section className='comments-section'>
                 <h3 className='comment-number'>{comments.length} Comments</h3>
-                <ul>
-                    {comments.map((comment)=>{
-                        return (<li>
-                            <p>{comment.user_name}</p>
-                            <p>{comment.comment}</p>
-                            <p>{comment.comment_likes}</p>
-                            </li>)
-                    })}
-                </ul>
+                <form className='comment-input-wrap' action='post' >
+                    <img className='user-icon' src={userIcon} alt="user-icon" />
+                    <input className='default-input comment-input' type="text" placeholder='Leave a comment...'/>
+                    <img className='add-comment-icon' src={commentIcon} alt="comment-icon" />
+                </form>
+                <CommentList comments={comments}/>
             </section>
             
         </section>

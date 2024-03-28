@@ -1,0 +1,44 @@
+@use '../../styles/partials/mixin' as *;
+@use '../../styles/partials/variable' as *;
+@use '../..//styles/partials/global' as *;
+
+.comment{
+    @include flex-space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 16px;
+    padding: 10px 0;
+    border-top: 1px solid $mercury;
+
+    .user-icons-comment-wrap{
+        display: flex;
+        gap: 25px;
+    }
+    .user-icon{
+        width: 30px;
+        height: 30px;
+        background-color: $mercury;
+        border-radius: 50%;
+        margin-top: 3px;
+    }
+    
+    .user-name{
+        font-weight: 600;
+    }
+
+    .likes{
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 8px;
+
+        &__icon{
+            width: 20px;
+            margin-right: 8px;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+
+    }
+}
