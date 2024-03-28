@@ -3,8 +3,7 @@ import './PostDetails.scss';
 import { useEffect, useState } from 'react';
 import { apiClient } from '../../utils/settle-smart-api';
 import CommentList from '../../components/CommentList/CommentList';
-import userIcon from '../../assets/icons/user-icon.png';
-import commentIcon from '../../assets/icons/comment-plus.svg';
+import AddCommentForm from '../../components/AddCommentForm/AddCommentForm';
 
 function PostDetails(){
     const params = useParams();
@@ -12,7 +11,10 @@ function PostDetails(){
     const [comments, setComments] = useState(null);
     const [dataLoading, setDataLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
+    const [commentAdded, setCommentAdded] = useState(false);
+    const [commentDeleted, setCommentDeleted] = useState(null);
 
+    //Fetch post and comments data
     useEffect(()=>{
         const fetchPostDetails = async () => {
             try {
@@ -29,6 +31,44 @@ function PostDetails(){
 
         fetchPostDetails();
     }, [params.postId])
+
+    //Fetch updated comments when new comment is posted
+    useEffect(()=>{
+        const fetchUpdatedComments = async ()=>{
+            try {
+                if(!commentAdded) return;
+                const updatedData = await apiClient.getComments(params.postId);
+                setComments(updatedData);
+            } catch (error) {
+                console.log(`fetchComments failed, ${error}`);
+            }
+        }
+        fetchUpdatedComments();
+    }, [params.postId, commentAdded]);
+
+    const showUpdatedComments = ()=>{
+        setCommentAdded(true);
+    }
+
+
+    //Fetch updated comments after a comment is deleted
+    useEffect(()=>{
+        const fetchComments = async ()=>{
+            try {
+                if(!commentDeleted) return;
+                await apiClient.deleteComment(params.postId, commentDeleted);
+                const updatedData = await apiClient.getComments(params.postId);
+                setComments(updatedData);
+            } catch (error) {
+                console.log(`fetchComments failed, ${error}`);
+            }
+        }
+        fetchComments();
+    }, [params.postId, commentDeleted]);
+
+    const showCommentsAfterDelete = (commentId)=>{
+        setCommentDeleted(commentId);
+    }
 
     if (hasError) {
         return (
@@ -50,12 +90,9 @@ function PostDetails(){
             {/* Comments Section */}
             <section className='comments-section'>
                 <h3 className='comment-number'>{comments.length} Comments</h3>
-                <form className='comment-input-wrap' action='post' >
-                    <img className='user-icon' src={userIcon} alt="user-icon" />
-                    <input className='default-input comment-input' type="text" placeholder='Leave a comment...'/>
-                    <img className='add-comment-icon' src={commentIcon} alt="comment-icon" />
-                </form>
-                <CommentList comments={comments}/>
+                {/* AddCommentForm component for adding and posting new comment*/}
+                <AddCommentForm showUpdatedComments={showUpdatedComments}/>
+                <CommentList comments={comments} showCommentsAfterDelete={showCommentsAfterDelete}/>
             </section>
             
         </section>

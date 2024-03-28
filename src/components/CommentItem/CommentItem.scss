@@ -26,19 +26,34 @@
         font-weight: 600;
     }
 
-    .likes{
+    &__details{
+        max-width: 450px;
+    }
+
+    .delete-like-icons-wrap{
         display: flex;
-        justify-content: flex-end;
-        margin-right: 8px;
-
-        &__icon{
+        align-items: center;
+        .delete-icon{
             width: 20px;
-            margin-right: 8px;
-
+            margin-right: 10px;
             &:hover{
                 cursor: pointer;
             }
         }
 
+        .likes{
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 8px;
+
+            &__icon{
+                width: 20px;
+                margin-right: 8px;
+
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        }
     }
 }

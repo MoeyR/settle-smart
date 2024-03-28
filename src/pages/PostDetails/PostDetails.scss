@@ -30,34 +30,11 @@
         width: 70%;
         max-width: 700px;
         margin: 20px auto;
+        padding-bottom: 20px;
     }   
 
     .comment-number{
         margin-top: 10px;
     }
 
-    .comment-input-wrap{
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        margin: 16px 0;
-        margin-bottom: 30px;
-
-        .user-icon{
-            width: 40px;
-            border-radius: 50%;
-        }
-
-        .comment-input{
-            width: 495px;
-            margin:0 16px;
-        }
-
-        .add-comment-icon{
-            width: 40px;
-            &:hover{
-                cursor: pointer;
-            }
-        }
-    }
 }

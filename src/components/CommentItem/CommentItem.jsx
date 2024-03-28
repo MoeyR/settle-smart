@@ -1,9 +1,10 @@
 import './CommentItem.scss';
 import whiteHeart from '../../assets/icons/heart-white.svg';
 import redHeart from '../../assets/icons/heart-red.svg';
+import deleteIcon from '../../assets/icons/delete.svg';
 import { useState } from 'react';
 
-function CommentItem({comment}){
+function CommentItem({comment, showCommentsAfterDelete}){
     const [liked, setLiked] = useState(false);
     const [likesCount, setLikesCount] = useState(comment.comment_likes);
 
@@ -17,6 +18,10 @@ function CommentItem({comment}){
         }
     };
 
+    const handleDeleteClick = ()=>{
+        showCommentsAfterDelete(comment.id);
+    }
+
     return(
         <li className='comment'>
             <section className='user-icons-comment-wrap'>
@@ -27,6 +32,7 @@ function CommentItem({comment}){
                 </section>
             </section>
             <section className='delete-like-icons-wrap'>
+                {comment.user_id === 20 && <img className='delete-icon' src={deleteIcon} alt='delete-icon' onClick={handleDeleteClick}/>}
                 <div className='likes'>
                     <img className='likes__icon' src={liked ? redHeart : whiteHeart} alt="heart-icon" onClick={handleLikeClick}/>
                     <p className='likes__number'>{likesCount}</p>

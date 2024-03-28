@@ -29,9 +29,26 @@ class SettleSmartApi {
             const commentsResponse = await axios.get(`${this.baseUrl}/posts/${id}/comments`)
             return commentsResponse.data;
         } catch (error) {
-            console.log(`GET post comments request failed, ${error}`);
+            console.log(`GET comments request failed, ${error}`);
         }
     }
+
+    async postComment(id, comment){
+        try {
+          await axios.post(`${this.baseUrl}/posts/${id}/comments`,comment);
+        } catch (error) {
+          console.log(`POST comment request failed, ${error}`);
+        }
+      }
+
+    async deleteComment(postId, commentId){
+        try {
+            await axios.delete(`${this.baseUrl}/posts/${postId}/comments/${commentId}`);
+        } catch (error) {
+            console.log(`DELETE comment request failed, ${error}`);
+        }
+    }
+
 }
 
 //Instantiate SettleSmartApi

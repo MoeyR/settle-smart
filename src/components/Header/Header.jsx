@@ -13,18 +13,18 @@ function Header(){
                 <div className='header__user-icon'></div>
             </section>
             <nav className='header__nav'>
-                <ul className='nav-list'>
+               <ul className='nav-list'>
                     <li className='nav-list__item'>
                         <p className='nav-list__item-link nav-list__item-link--active'>Nearby</p>  
-                    </li>
-                    <li className='nav-list__item'>
-                        <p className='nav-list__item-link'>Followings</p>
                     </li>
                     <li className='nav-list__item'>
                         <p className='nav-list__item-link'>Food</p>
                     </li>
                     <li className='nav-list__item'>
-                        <p className='nav-list__item-link'>Word</p>
+                        <p className='nav-list__item-link'>Travel</p>
+                    </li>
+                    <li className='nav-list__item'>
+                        <p className='nav-list__item-link'>Rental</p>
                     </li>
                 </ul>
                 <Link className='header__add-link' to="/PostAdd">
