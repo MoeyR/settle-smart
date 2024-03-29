@@ -29,12 +29,12 @@
   }
 
   .default-input {
-    height: 2.25rem;
+    height: 36px;
     width: 100%;
     background-color: $white;
-    border: .0625rem solid $cloud;
-    border-radius: 1.25rem;
-    padding: .625rem 1rem;
+    border: 1px solid #d8d7d7;
+    border-radius: 15px;
+    padding: 10px 16px;
   
     &:focus {
       border-color: $dark-black;

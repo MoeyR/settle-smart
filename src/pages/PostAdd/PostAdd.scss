@@ -1,0 +1,126 @@
+@use '../../styles/partials/mixin' as *;
+@use '../../styles/partials/variable' as *;
+@use '../..//styles/partials/global' as *;
+
+.form{
+    max-width: 665px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background: #efefef;
+    border-radius: 8px;
+    box-shadow: 2px 6px 8px 4px gray;
+
+    &-thumbnail-section{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item-label{
+        color: $mild-black;
+        font-weight: 700;
+        margin-top: 20px;
+    }
+
+    &__label-text{
+        &::after{
+            content:"";
+            display: block;
+            border-bottom: 3px solid $dark-red;
+            border-radius: 50px;
+            width: 30px;
+        }
+    }
+
+    &__thumbnail-image{
+        width: 255px;
+        display: block;
+        margin: 10px auto;
+        border-radius: 8px;
+    }
+
+    &__thumbnail-upload{
+        display: block;
+        margin: 0 auto;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    &__item-input, &__item-textarea{
+        margin-top: 10px;
+        &::placeholder {
+            font-family: "Avenir-Next";
+        }
+    }
+
+    &__item-textarea{
+        height: 150px;
+        resize: none;
+        width: 100%;
+        background-color: $white;
+        border: .0625rem solid #d8d7d7;
+        border-radius: 15px;
+        padding: 10px 16px;
+    
+        &:focus {
+            border-color: $dark-black;
+            outline: none;
+        }
+    
+        &--error-state {
+        border-color: $bright-red;
+        }
+
+    }
+
+    &__buttons-wrap{
+        margin: 16px auto;
+    }
+
+    &__post-button, &__cancel-button{
+        font-family: "Avenir-Next";
+        width: 141.08px;
+        height: 37px;
+        font-size: 12px;
+        font-weight: 600;
+        color: $white;
+        padding-top: 4px;
+        margin-top: 8px;
+        margin-right: 25px;
+        border: 2px solid black;
+        border-radius: 15px;
+        background-color: #404040;
+        cursor: pointer;
+        
+        &:hover {
+            background-color: $mild-black;
+            box-shadow: 2px 2px 2px grey;
+        }
+    }
+
+    &__post-button{
+        &:hover {
+            color: $bright-mint;
+        }
+    }
+    &__cancel-button{
+        &:hover {
+            color: $bright-red;
+        }
+    }
+
+    .error-message{
+        padding-top: 10px;
+        margin: 0 auto;
+        color: $dark-red;
+        font-weight: 600;
+    }
+    .success-message{
+        color: green;
+        font-weight: 600;
+        padding: 5.6px 0 16px 0;
+    }
+}

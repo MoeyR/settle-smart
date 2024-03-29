@@ -15,6 +15,7 @@ class SettleSmartApi {
         }
     }
 
+    //Get a single post
     async getPostDetails(id){
         try {
             const response = await axios.get(`${this.baseUrl}/posts/${id}`);
@@ -24,6 +25,19 @@ class SettleSmartApi {
         }
     }
 
+    async addPost(post){
+        try {
+            await axios.post(`${this.baseUrl}/posts`, post, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                  },
+            });
+        } catch (error) {
+            console.log(`POST a single post request failed, ${error}`);
+        }
+    }
+
+    //CRUD for comments
     async getComments(id){
         try {
             const commentsResponse = await axios.get(`${this.baseUrl}/posts/${id}/comments`)

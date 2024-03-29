@@ -86,6 +86,7 @@ function PostDetails(){
             <section className='title-content-wrap'>
                 <h2 className='post-details__title'>{postDetails.post_title}</h2>
                 <p className='post-details__content'>{postDetails.post_content}</p>
+                <p>{postDetails.post_location}</p>
             </section>
             {/* Comments Section */}
             <section className='comments-section'>
