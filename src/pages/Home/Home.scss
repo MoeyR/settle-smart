@@ -30,6 +30,24 @@
                 border-bottom: 3px solid $dark-red;
             }
         }
+
+        &__search-bar{
+            height: 26px;
+            width: 100%;
+            background-color: #FFFFFF;
+            border: 1px solid #d8d7d7;
+            border-radius: 10px;
+            padding: 0 10px;
+            &:focus {
+                border-color: $dark-black;
+                outline: none;
+                border-color: $dark-black;
+            
+                &::placeholder {
+                  color: $dark-black;
+                }
+              }
+        }
     }
 
     &__add-icon{
