@@ -14,7 +14,7 @@
     border: 1px solid $mercury;
     border-radius: 5px;
     &:hover{
-        background-color: #ebe8e8;
+        background-color: $postCardBackground;
     }
  
     &__image{

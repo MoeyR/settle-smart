@@ -5,7 +5,8 @@
 .post-details{
     display: flex;
     flex-direction: column;
-
+    max-width: 700px;
+    margin: 10px auto;
    
     &__image{
         width: 300px;
@@ -14,8 +15,7 @@
     }
 
     .title-content-wrap{
-        width: 70%;
-        max-width: 700px;
+        width: 100%;
         margin: 10px auto; 
     }
 
@@ -24,11 +24,25 @@
         margin: 20px 0;
     }
 
+    &__location{
+        display: flex;
+        align-items: center;
+        margin-top: 24px;
+
+        &:hover{
+            cursor: pointer;
+        }
+
+        &-icon{
+            width: 30px;
+            margin-right: 5px;
+            margin-top: -8px;
+        }
+    }
 
     // Comments Section
     .comments-section{
-        width: 70%;
-        max-width: 700px;
+        width: 100%;
         margin: 20px auto;
         padding-bottom: 20px;
     }   

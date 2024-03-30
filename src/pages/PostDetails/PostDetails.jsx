@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { apiClient } from '../../utils/settle-smart-api';
 import CommentList from '../../components/CommentList/CommentList';
 import AddCommentForm from '../../components/AddCommentForm/AddCommentForm';
+import GoogleMap from '../../components/GoogleMap/GoogleMap';
+import locationIcon from '../../assets/icons/location.svg'
 
 function PostDetails(){
     const params = useParams();
@@ -13,6 +15,7 @@ function PostDetails(){
     const [hasError, setHasError] = useState(false);
     const [commentAdded, setCommentAdded] = useState(false);
     const [commentDeleted, setCommentDeleted] = useState(null);
+    const [showMap, setShowMap] = useState(false);
 
     //Fetch post and comments data
     useEffect(()=>{
@@ -70,6 +73,14 @@ function PostDetails(){
         setCommentDeleted(commentId);
     }
 
+    const handleShowMapClick = ()=>{
+        if(!showMap){
+            setShowMap(true);
+        }else{
+            setShowMap(false);
+        }
+    }
+
     if (hasError) {
         return (
           <p>Unable to access post details right now. Please try again later.</p>
@@ -86,8 +97,13 @@ function PostDetails(){
             <section className='title-content-wrap'>
                 <h2 className='post-details__title'>{postDetails.post_title}</h2>
                 <p className='post-details__content'>{postDetails.post_content}</p>
-                <p>{postDetails.post_location}</p>
+                <p className='post-details__location' onClick={handleShowMapClick}>
+                    <img className='post-details__location-icon' src={locationIcon} alt='location-icon'/>
+                    {postDetails.post_location}
+                </p>
             </section>
+            {/* GoogleMap Section */}
+            {showMap && <GoogleMap />}
             {/* Comments Section */}
             <section className='comments-section'>
                 <h3 className='comment-number'>{comments.length} Comments</h3>

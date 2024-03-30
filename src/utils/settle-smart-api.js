@@ -2,7 +2,7 @@ import axios from "axios";
 
 class SettleSmartApi {
     constructor(){
-        this.baseUrl = "http://localhost:8080";
+        this.baseUrl = process.env.REACT_APP_BASE_URL;
     }
 
     //Get All Posts
