@@ -1,15 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./PostAdd.scss";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { apiClient } from "../../utils/settle-smart-api";
 import imgPlaceholder from "../../assets/images/thumbnail-placeholder.png";
+import { StandaloneSearchBox } from "@react-google-maps/api";
+// eslint-disable-next-line
+import { Loader } from "@googlemaps/js-api-loader";
 
 function PostAdd() {
   const navigate = useNavigate();
   const [postTitle, setPostTitle] = useState("");
   const [postContent, setPostContent] = useState("");
   const [postImage, setPostImage] = useState("");
-  const [postLocation, setPostLocation] = useState("");
+  const [locationEntered, setlocationEntered] = useState(false);
+  const [googleMapsLoaded, setGoogleMapsLoaded] = useState(false);
+  const inputLocationRef = useRef();
 
   const [invalidInput, setInvalidInput] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -28,13 +33,39 @@ function PostAdd() {
     setPostImage(event.target.files[0]);
   };
 
-  const handleChangeLocation = (event) => {
-    setPostLocation(event.target.value);
+  // Load Google Maps API and set Google Maps loaded state
+  useEffect(() => {
+    const loader = new Loader({
+      apiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
+      version: "weekly",
+      libraries: ["places"],
+    });
+
+    loader.load().then(() => {
+      setGoogleMapsLoaded(true);
+    });
+
+    return () => {
+      setGoogleMapsLoaded(false);
+    };
+  }, []);
+
+  let place;
+  const handlePlaceChanged = () => {
+    [place] = inputLocationRef.current.getPlaces();
+    setlocationEntered(true);
+    if (place) {
+      console.log(place.formatted_address);
+      console.log(place.geometry.location.lat());
+      console.log(place.geometry.location.lng());
+      //console.log(place);
+    }
   };
 
   const publishPost = async (event) => {
     event.preventDefault();
 
+    //Form validation
     if (postTitle.trim() === "") {
       setInvalidInput(true);
       setErrorMessage("Title");
@@ -44,10 +75,12 @@ function PostAdd() {
     } else if (!postImage) {
       setInvalidInput(true);
       setErrorMessage("Thumbnail");
-    } else if (!postLocation) {
+    }
+    else if (!place && locationEntered) {
       setInvalidInput(true);
       setErrorMessage("Location");
-    } else {
+    }
+    else {
       try {
         const newPost = {
           user_id: 20,
@@ -55,10 +88,10 @@ function PostAdd() {
           post_content: postContent,
           post_collects: 0,
           post_image: postImage,
-          post_location: postLocation
+          post_location: place.formatted_address,
         };
         await apiClient.addPost(newPost);
-        console.log(newPost)
+        console.log(newPost);
         setSubmitSuccess(true);
         setInvalidInput(false);
         setTimeout(() => {
@@ -73,7 +106,6 @@ function PostAdd() {
   const clearForm = () => {
     setPostTitle("");
     setPostContent("");
-    setPostLocation("");
   };
 
   return (
@@ -96,7 +128,7 @@ function PostAdd() {
         </label>
       </section>
       <label className="form__item-label" htmlFor="post_title">
-      <h4 className="form__label-text">ADD A TITLE </h4>
+        <h4 className="form__label-text">ADD A TITLE </h4>
         <input
           className="default-input form__item-input"
           type="text"
@@ -106,7 +138,7 @@ function PostAdd() {
         />
       </label>
       <label className="form__item-label" htmlFor="post_content">
-      <h4 className="form__label-text">ADD A DESCRIPTION </h4>
+        <h4 className="form__label-text">ADD A DESCRIPTION </h4>
         <textarea
           className="form__item-textarea"
           name="post_content"
@@ -115,20 +147,25 @@ function PostAdd() {
         ></textarea>
       </label>
       <label className="form__item-label" htmlFor="post_location">
-      <h4 className="form__label-text"> LOCATION </h4>
-        <input
-          className="default-input form__item-input"
-          type="text"
-          name="post_location"
-          placeholder="Add your location"
-          onChange={handleChangeLocation}
-        />
+        <h4 className="form__label-text"> LOCATION </h4>
+        {googleMapsLoaded && (
+          <StandaloneSearchBox
+            onLoad={(ref) => (inputLocationRef.current = ref)}
+            onPlacesChanged={handlePlaceChanged}
+          >
+            <input
+              className="default-input form__item-input"
+              type="text"
+              name="post_location"
+              placeholder="Add your location"
+            />
+          </StandaloneSearchBox>
+        )}
       </label>
-
       {invalidInput && (
         <div className="error-message">{errorMessage} is required</div>
       )}
-
+      {/* Form Buttons */}
       <section className="form__buttons-wrap">
         <button
           type="submit"
@@ -138,14 +175,11 @@ function PostAdd() {
           POST
         </button>
         <Link to="/">
-          <button
-            onClick={clearForm}
-            className="form__cancel-button"
-          >
+          <button onClick={clearForm} className="form__cancel-button">
             CANCEL
           </button>
         </Link>
-
+        {/* Messages */}
         {submitSuccess && (
           <div className="success-message">
             Successfully posted! Taking you to HOME page.
