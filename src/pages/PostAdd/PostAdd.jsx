@@ -3,7 +3,7 @@ import "./PostAdd.scss";
 import { useEffect, useRef, useState } from "react";
 import { apiClient } from "../../utils/settle-smart-api";
 import imgPlaceholder from "../../assets/images/thumbnail-placeholder.png";
-import { StandaloneSearchBox } from "@react-google-maps/api";
+import { LoadScript, StandaloneSearchBox } from "@react-google-maps/api";
 // eslint-disable-next-line
 import { Loader } from "@googlemaps/js-api-loader";
 
@@ -33,7 +33,7 @@ function PostAdd() {
     setPostImage(event.target.files[0]);
   };
 
-  // Load Google Maps API and set Google Maps loaded state
+  //Load Google Maps API and set Google Maps loaded state
   useEffect(() => {
     const loader = new Loader({
       apiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
@@ -149,6 +149,7 @@ function PostAdd() {
       <label className="form__item-label" htmlFor="post_location">
         <h4 className="form__label-text"> LOCATION </h4>
         {googleMapsLoaded && (
+        
           <StandaloneSearchBox
             onLoad={(ref) => (inputLocationRef.current = ref)}
             onPlacesChanged={handlePlaceChanged}
@@ -160,6 +161,7 @@ function PostAdd() {
               placeholder="Add your location"
             />
           </StandaloneSearchBox>
+        
         )}
       </label>
       {invalidInput && (

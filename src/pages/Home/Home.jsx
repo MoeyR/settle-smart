@@ -1,7 +1,5 @@
 import "./Home.scss";
 import PostCardList from "../../components/PostCardList/PostCardList";
-import addIcon from "../../assets/icons/add.svg";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { apiClient } from "../../utils/settle-smart-api";
 
@@ -52,13 +50,9 @@ function Home() {
             </p>
           </li>
           <li className="nav-list__item">
-            <p className="nav-list__item-link">Food</p>
-          </li>
-          <li className="nav-list__item">
-            <p className="nav-list__item-link">Travel</p>
-          </li>
-          <li className="nav-list__item">
-            <p className="nav-list__item-link">Rental</p>
+            <p className="nav-list__item-link">
+              Explore
+            </p>
           </li>
           <li>
             <form>
@@ -72,9 +66,6 @@ function Home() {
             </form>
           </li>
         </ul>
-        <Link className="nav__add-link" to="/posts/add">
-          <img className="nav__add-icon" src={addIcon} alt="add-icon" />
-        </Link>
       </nav>
       <section className="posts-wrap">
         {/* PostCardList component for displaying the list of all posts */}

@@ -4,6 +4,8 @@ import Home from './pages/Home/Home';
 import PostDetails from './pages/PostDetails/PostDetails';
 import PostAdd from './pages/PostAdd/PostAdd';
 import Header from './components/Header/Header';
+import UserPosts from './pages/UserPosts/UserPosts';
+import { LoadScript } from "@react-google-maps/api";
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
       <Route path='/' element={<Home />}></Route>
       <Route path='/posts/:postId' element={<PostDetails />}></Route>
       <Route path='/posts/add' element={<PostAdd />}></Route>
+      <Route path='/users/:userId/posts' element={<UserPosts />}></Route>
     </Routes>
     </BrowserRouter>
     </>

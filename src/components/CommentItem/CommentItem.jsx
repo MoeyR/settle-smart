@@ -22,10 +22,11 @@ function CommentItem({comment, showCommentsAfterDelete}){
         showCommentsAfterDelete(comment.id);
     }
 
+    console.log(comment.user_icon)
     return(
         <li className='comment'>
             <section className='user-icons-comment-wrap'>
-                <div className='user-icon'></div>
+                <img className='user-icon' src={comment.user_icon} alt='user-icon'/>
                 <section className='username-comment-wrap'>
                     <h4 className='user-name'>{comment.user_name}</h4>
                     <p className='comment__details'>{comment.comment}</p>

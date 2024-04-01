@@ -5,7 +5,7 @@ class SettleSmartApi {
         this.baseUrl = process.env.REACT_APP_BASE_URL;
     }
 
-    //Get All Posts
+    //GET All Posts
     async getPosts(){
         try {
             const response = await axios.get(`${this.baseUrl}/posts`);
@@ -15,7 +15,7 @@ class SettleSmartApi {
         }
     }
 
-    //Get a single post
+    //GET a single post
     async getPostDetails(id){
         try {
             const response = await axios.get(`${this.baseUrl}/posts/${id}`);
@@ -37,10 +37,20 @@ class SettleSmartApi {
         }
     }
 
+    //GET a user's posts
+    async getUserPosts(userId){
+        try {
+            const userPostsResponds = await axios.get(`${this.baseUrl}/users/${userId}/posts`);
+            return userPostsResponds.data;
+        } catch (error) {
+            console.log(`GET user's posts request failed, ${error}`);
+        }
+    }
+
     //CRUD for comments
     async getComments(id){
         try {
-            const commentsResponse = await axios.get(`${this.baseUrl}/posts/${id}/comments`)
+            const commentsResponse = await axios.get(`${this.baseUrl}/posts/${id}/comments`);
             return commentsResponse.data;
         } catch (error) {
             console.log(`GET comments request failed, ${error}`);
