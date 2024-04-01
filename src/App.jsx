@@ -5,7 +5,6 @@ import PostDetails from './pages/PostDetails/PostDetails';
 import PostAdd from './pages/PostAdd/PostAdd';
 import Header from './components/Header/Header';
 import UserPosts from './pages/UserPosts/UserPosts';
-import { LoadScript } from "@react-google-maps/api";
 
 function App() {
   return (

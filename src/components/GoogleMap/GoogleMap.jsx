@@ -1,8 +1,8 @@
 import './GoogleMap.scss';
 import {APIProvider, Map, AdvancedMarker} from '@vis.gl/react-google-maps';
 
-function GoogleMap(){
-    const position = {lat: 43.6532, lng: -79.3832};
+function GoogleMap({latitude, longitude}){
+    const position = {lat: Number(latitude), lng: Number(longitude)};
   return (
         <APIProvider apiKey={process.env.REACT_APP_GOOGLE_MAP_API_KEY} libraries={["places"]}>
             <section className='map-wrap'>

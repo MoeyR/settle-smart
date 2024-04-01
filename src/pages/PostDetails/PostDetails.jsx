@@ -103,7 +103,7 @@ function PostDetails(){
                 </p>
             </section>
             {/* GoogleMap Section */}
-            {showMap && <GoogleMap />}
+            {showMap && <GoogleMap latitude={postDetails.post_latitude} longitude={postDetails.post_longitude}/>}
             {/* Comments Section */}
             <section className='comments-section'>
                 <h3 className='comment-number'>{comments.length} Comments</h3>

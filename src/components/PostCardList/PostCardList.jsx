@@ -1,10 +1,10 @@
 import "./PostCardList.scss";
 import PostCard from "../PostCard/PostCard";
 
-function PostCardList({filteredPosts}) {
+function PostCardList({postsDisplay}) {
   return (
     <ul className="posts-list">
-        {filteredPosts.map((post)=>{
+        {postsDisplay.map((post)=>{
           return <PostCard key={post.id} post={post} />;
       })
       }

@@ -22,7 +22,6 @@ function CommentItem({comment, showCommentsAfterDelete}){
         showCommentsAfterDelete(comment.id);
     }
 
-    console.log(comment.user_icon)
     return(
         <li className='comment'>
             <section className='user-icons-comment-wrap'>

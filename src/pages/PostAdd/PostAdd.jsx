@@ -3,7 +3,7 @@ import "./PostAdd.scss";
 import { useEffect, useRef, useState } from "react";
 import { apiClient } from "../../utils/settle-smart-api";
 import imgPlaceholder from "../../assets/images/thumbnail-placeholder.png";
-import { LoadScript, StandaloneSearchBox } from "@react-google-maps/api";
+import { StandaloneSearchBox } from "@react-google-maps/api";
 // eslint-disable-next-line
 import { Loader } from "@googlemaps/js-api-loader";
 
@@ -12,7 +12,7 @@ function PostAdd() {
   const [postTitle, setPostTitle] = useState("");
   const [postContent, setPostContent] = useState("");
   const [postImage, setPostImage] = useState("");
-  const [locationEntered, setlocationEntered] = useState(false);
+  const [locationEntered, setlocationEntered] = useState("");
   const [googleMapsLoaded, setGoogleMapsLoaded] = useState(false);
   const inputLocationRef = useRef();
 
@@ -33,6 +33,11 @@ function PostAdd() {
     setPostImage(event.target.files[0]);
   };
 
+  //To check location input is empty or not
+  const handleChangeLocation =(event)=>{
+    setlocationEntered(event.target.value);
+  }
+
   //Load Google Maps API and set Google Maps loaded state
   useEffect(() => {
     const loader = new Loader({
@@ -50,15 +55,14 @@ function PostAdd() {
     };
   }, []);
 
+
   let place;
   const handlePlaceChanged = () => {
     [place] = inputLocationRef.current.getPlaces();
-    setlocationEntered(true);
     if (place) {
       console.log(place.formatted_address);
       console.log(place.geometry.location.lat());
       console.log(place.geometry.location.lng());
-      //console.log(place);
     }
   };
 
@@ -76,7 +80,7 @@ function PostAdd() {
       setInvalidInput(true);
       setErrorMessage("Thumbnail");
     }
-    else if (!place && locationEntered) {
+    else if (!place || locationEntered.trim() === "") {
       setInvalidInput(true);
       setErrorMessage("Location");
     }
@@ -89,9 +93,10 @@ function PostAdd() {
           post_collects: 0,
           post_image: postImage,
           post_location: place.formatted_address,
+          post_latitude: place.geometry.location.lat(),
+          post_longitude: place.geometry.location.lng(),
         };
         await apiClient.addPost(newPost);
-        console.log(newPost);
         setSubmitSuccess(true);
         setInvalidInput(false);
         setTimeout(() => {
@@ -159,6 +164,7 @@ function PostAdd() {
               type="text"
               name="post_location"
               placeholder="Add your location"
+              onChange={handleChangeLocation}
             />
           </StandaloneSearchBox>
         

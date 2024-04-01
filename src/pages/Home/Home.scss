@@ -18,7 +18,12 @@
         align-items: center;
         margin: 0 auto;
 
-        &__item-link{
+        &__item-button{
+            border: none;
+            background: none;
+            color: inherit;
+            font: inherit;
+
             &:hover{
                 color: $white;
                 cursor: pointer;

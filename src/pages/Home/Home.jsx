@@ -1,22 +1,14 @@
 import "./Home.scss";
 import PostCardList from "../../components/PostCardList/PostCardList";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { apiClient } from "../../utils/settle-smart-api";
 
 function Home() {
-  
   const [posts, setPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [dataLoading, setDataLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-
-  const handleChangeSearch = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const filteredPosts = posts.filter(post=>{
-    return post.post_title.toLowerCase().includes(searchQuery.toLocaleLowerCase())
-  });
+  const [filterType, setFilterType] = useState("explore"); // Default filter type
 
   const fetchPosts = async () => {
     try {
@@ -28,9 +20,36 @@ function Home() {
       setHasError(true);
     }
   };
+
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  // Memoize the filtered posts to avoid unnecessary re-computation on every render.
+    // Only recompute when the dependencies (posts, searchQuery, filterType) change.
+  const filteredPosts = useMemo(() => {
+    let filtered = posts;
+    if (searchQuery) {
+      filtered = filtered.filter((post) =>
+        post.post_title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+    if (filterType === "nearby") {
+      filtered = filtered.filter((post) =>
+        post.post_location.toLowerCase().includes("toronto")
+      );
+    }
+    return filtered;
+  }, [posts, searchQuery, filterType]);
+
+  const handleChangeSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleUpdateFilter = (e) => {
+    const btnValue = e.target.value; // nearby / explore
+    setFilterType(btnValue);
+  };
 
   if (hasError) {
     return <p>Unable to access posts right now. Please try again later.</p>;
@@ -45,14 +64,26 @@ function Home() {
       <nav className="nav">
         <ul className="nav-list">
           <li className="nav-list__item">
-            <p className="nav-list__item-link nav-list__item-link--active">
+            <button
+              className={`nav-list__item-button ${
+                filterType === "nearby" ? "nav-list__item-button--active" : ""
+              }`}
+              value="nearby"
+              onClick={handleUpdateFilter}
+            >
               Nearby
-            </p>
+            </button>
           </li>
           <li className="nav-list__item">
-            <p className="nav-list__item-link">
+            <button
+              className={`nav-list__item-button ${
+                filterType === "explore" ? "nav-list__item-button--active" : ""
+              }`}
+              value="explore"
+              onClick={handleUpdateFilter}
+            >
               Explore
-            </p>
+            </button>
           </li>
           <li>
             <form>
@@ -68,8 +99,7 @@ function Home() {
         </ul>
       </nav>
       <section className="posts-wrap">
-        {/* PostCardList component for displaying the list of all posts */}
-        <PostCardList filteredPosts={filteredPosts} />
+        <PostCardList postsDisplay={filteredPosts} />
       </section>
     </main>
   );
