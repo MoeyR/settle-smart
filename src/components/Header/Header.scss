@@ -3,15 +3,25 @@
 @use '../../styles/partials/global' as *;
 
 .header{
+    min-width: 320px;
     background-color: black;
-    padding: $between-components-mobile 24px;
+    padding: $between-components-mobile $between-components-mobile 10px;
+    @include tablet{
+        padding: $between-components-mobile 24px;
+    }
     .logo-icon-wrap{
         @include flex-space-between;
         align-items: center;
+        max-width: 1008px;
+        margin: 0 auto;
     }
+
     &__logo{
-        height: 80px;
-        margin-left: -15px;
+        height: 65px;
+        margin-left: -10px;
+        @include tablet{
+            height: 80px;
+        }    
     }
 
     .icons-wrap{
@@ -24,21 +34,32 @@
         background-size: cover;
         background-position-y: -1px;
         border-radius: 50%;
-        height: 45px;
-        width: 45px;
-        margin-bottom: 7px;
         &:hover{
             cursor: pointer;
         }
+        height: 36px;
+        width: 36px;
+        margin-bottom: 5px;
+
+        @include tablet{
+            height: 45px;
+            width: 45px;
+            margin-bottom: 7px;
+        }
+        
     }
     
     &__add-icon{
-        height: 30px;
-        border-radius: 13px;
-        margin-bottom: -7px;
-
+        height: 22px;
+        border-radius: 8px;
+        margin-bottom: -5px;
         &:hover {
             box-shadow: 2px 2px 2px #666;
+        }
+        @include tablet{
+            height: 30px;
+            border-radius: 13px;
+            margin-bottom: -7px;
         }
     }
 

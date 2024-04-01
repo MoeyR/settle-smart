@@ -8,10 +8,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 20px;
+    padding: 0 20px;
     background: #efefef;
     border-radius: 8px;
     box-shadow: 2px 6px 8px 4px gray;
+    @include tablet{
+        padding: 20px;
+    }
 
     &-thumbnail-section{
         display: flex;
@@ -35,10 +38,11 @@
     }
 
     &__thumbnail-image{
-        width: 255px;
+        width: 60%;
         display: block;
         margin: 10px auto;
         border-radius: 8px;
+        max-width: 255px;
     }
 
     &__thumbnail-upload{
@@ -82,18 +86,21 @@
 
     &__post-button, &__cancel-button{
         font-family: "Avenir-Next";
-        width: 141.08px;
+        width: 128.08px;
         height: 37px;
         font-size: 12px;
         font-weight: 600;
         padding-top: 4px;
         margin-top: 8px;
-        margin-right: 25px;
+        margin-right: 7px;
         border: 1px solid lightgray;
         border-radius: 15px;
         background-color: #ffffff;
         cursor: pointer;
-        
+        @include tablet{
+            width: 141.08px;
+            margin-right: 25px;
+        }
         &:hover {
             background-color: $mild-black;
             box-shadow: 2px 2px 2px grey;

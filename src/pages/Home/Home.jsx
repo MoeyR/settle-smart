@@ -63,21 +63,19 @@ function Home() {
     <main className="posts">
       <nav className="nav">
         <ul className="nav-list">
-          <li className="nav-list__item">
+          <li className="nav-list__buttons-wrap">
             <button
-              className={`nav-list__item-button ${
-                filterType === "nearby" ? "nav-list__item-button--active" : ""
+              className={`nav-list__button ${
+                filterType === "nearby" ? "nav-list__button--active" : ""
               }`}
               value="nearby"
               onClick={handleUpdateFilter}
             >
               Nearby
             </button>
-          </li>
-          <li className="nav-list__item">
             <button
-              className={`nav-list__item-button ${
-                filterType === "explore" ? "nav-list__item-button--active" : ""
+              className={`nav-list__button ${
+                filterType === "explore" ? "nav-list__button--active" : ""
               }`}
               value="explore"
               onClick={handleUpdateFilter}
@@ -85,7 +83,7 @@ function Home() {
               Explore
             </button>
           </li>
-          <li>
+          <li className="nav-list__search-wrap">
             <form>
               <input
                 className="nav-list__search-bar"

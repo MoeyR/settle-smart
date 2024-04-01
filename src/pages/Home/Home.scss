@@ -2,23 +2,53 @@
 @use '../../styles/partials/variable' as *;
 @use '../..//styles/partials/global' as *;
 
+.posts{
+    min-width: 320px;
+}
+
 //Nav bar styles
 .nav{
     width: 100%;
-    padding: 0 $between-components-mobile 10px $between-components-mobile;
     @include flex-space-between;
-    font-size: 18px;
-    font-weight: 600;
     color: $mercury;
     background-color: black;
+    font-size: 15px;
+    font-weight: 600;
+
+    @include tablet{
+        font-size: 18px;
+        font-weight: 600;
+    }
     
     .nav-list{
-        @include flex-space-between;
-        width: 50%;
-        align-items: center;
+        width: 100%;
+        max-width: 1008px;
         margin: 0 auto;
+        @include tablet{
+            display: flex;
+            width: 60%;
+            align-items: center;
+            margin: 0 auto;
+        }
 
-        &__item-button{
+        &__buttons-wrap{
+            width: 50%;
+            height: 30px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 45px;
+            margin: 0 auto;
+            background: black;
+
+            @include tablet{
+                max-width: 315px;
+                width: 50%;
+                margin-right: 26px;
+            }
+        }        
+
+        &__button{
             border: none;
             background: none;
             color: inherit;
@@ -36,13 +66,32 @@
             }
         }
 
+        &__search-wrap{
+            background-color: $white;
+            padding: 10px $between-components-mobile;
+            @include tablet{
+                width: 50%;
+                background-color: black;
+                padding: $between-components-mobile $between-components-mobile 10px;
+            }
+        }
+
         &__search-bar{
+            width: 85%;
             height: 26px;
-            width: 100%;
+            display: block;
+            margin: 0 auto;
             background-color: #FFFFFF;
             border: 1px solid #d8d7d7;
             border-radius: 10px;
             padding: 0 10px;
+            
+            @include tablet{
+                width: 95%;
+                margin: 0;
+                margin-left: 16px;
+                max-width: 250px;
+            }
             &:focus {
                 border-color: $dark-black;
                 outline: none;
@@ -52,6 +101,7 @@
                   color: $dark-black;
                 }
               }
+            
         }
     }
 
