@@ -1,14 +1,13 @@
-@use '../../styles/partials/mixin' as *;
-@use '../../styles/partials/variable' as *;
-@use '../..//styles/partials/global' as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variable" as *;
+@use "../..//styles/partials/global" as *;
 
-.posts{
-
-    &-list{
-        display: flex;
-        flex-wrap: wrap;
-        max-width: 1280px;
-        justify-content: space-around;
-        margin: 0 auto;
-    }
-}  
+.posts {
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 80rem;
+    justify-content: space-around;
+    margin: 0 auto;
+  }
+}

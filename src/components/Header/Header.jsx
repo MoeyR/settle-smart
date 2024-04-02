@@ -15,7 +15,7 @@ function Header() {
           />
         </Link>
         <section className="icons-wrap">
-          <Link to='/users/20/posts'>
+          <Link to="/users/20/posts">
             <div className="header__user-icon"></div>
           </Link>
           <Link className="header__add-link" to="/posts/add">

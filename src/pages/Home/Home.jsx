@@ -13,8 +13,13 @@ function Home() {
   const fetchPosts = async () => {
     try {
       const postResponse = await apiClient.getPosts();
+      //sort posts by posting time
+      const sortedPosts = postResponse.sort(
+        (a, b) =>
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      );
       setDataLoading(false);
-      setPosts(postResponse);
+      setPosts(sortedPosts);
     } catch (error) {
       setDataLoading(false);
       setHasError(true);
@@ -26,7 +31,7 @@ function Home() {
   }, []);
 
   // Memoize the filtered posts to avoid unnecessary re-computation on every render.
-    // Only recompute when the dependencies (posts, searchQuery, filterType) change.
+  // Only recompute when the dependencies (posts, searchQuery, filterType) change.
   const filteredPosts = useMemo(() => {
     let filtered = posts;
     if (searchQuery) {

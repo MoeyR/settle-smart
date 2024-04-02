@@ -34,9 +34,9 @@ function PostAdd() {
   };
 
   //To check location input is empty or not
-  const handleChangeLocation =(event)=>{
+  const handleChangeLocation = (event) => {
     setlocationEntered(event.target.value);
-  }
+  };
 
   //Load Google Maps API and set Google Maps loaded state
   useEffect(() => {
@@ -54,7 +54,6 @@ function PostAdd() {
       setGoogleMapsLoaded(false);
     };
   }, []);
-
 
   let place;
   const handlePlaceChanged = () => {
@@ -79,12 +78,10 @@ function PostAdd() {
     } else if (!postImage) {
       setInvalidInput(true);
       setErrorMessage("Thumbnail");
-    }
-    else if (!place || locationEntered.trim() === "") {
+    } else if (locationEntered.trim() === "" && !place) {
       setInvalidInput(true);
       setErrorMessage("Location");
-    }
-    else {
+    } else {
       try {
         const newPost = {
           user_id: 20,
@@ -154,7 +151,6 @@ function PostAdd() {
       <label className="form__item-label" htmlFor="post_location">
         <h4 className="form__label-text"> LOCATION </h4>
         {googleMapsLoaded && (
-        
           <StandaloneSearchBox
             onLoad={(ref) => (inputLocationRef.current = ref)}
             onPlacesChanged={handlePlaceChanged}
@@ -167,7 +163,6 @@ function PostAdd() {
               onChange={handleChangeLocation}
             />
           </StandaloneSearchBox>
-        
         )}
       </label>
       {invalidInput && (

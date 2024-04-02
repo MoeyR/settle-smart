@@ -1,37 +1,37 @@
-@use '../../styles/partials/mixin' as *;
-@use '../../styles/partials/variable' as *;
-@use '../..//styles/partials/global' as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variable" as *;
+@use "../..//styles/partials/global" as *;
 
-.add-comment{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin: 20px 0;
-    padding:0 16px;
+.add-comment {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1.25rem 0;
+  padding: 0 1rem;
 
-    &__user-icon{
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
+  &__user-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+  }
+
+  .input-message-wrap {
+    width: 30.9375rem;
+    margin: 0 1rem;
+  }
+
+  .error-message {
+    color: $dark-red;
+  }
+
+  .success-message {
+    color: green;
+  }
+
+  &__icon {
+    width: 2.5rem;
+    &:hover {
+      cursor: pointer;
     }
-
-    .input-message-wrap{
-        width: 495px;
-        margin:0 16px;
-    }
-
-    .error-message{
-        color: $dark-red;
-    }
-
-    .success-message{
-        color: green;
-    }
-
-    &__icon{
-        width: 40px;
-        &:hover{
-            cursor: pointer;
-        }
-    }
+  }
 }

@@ -1,11 +1,13 @@
 import CommentItem from '../CommentItem/CommentItem';
-import './CommentList.scss';
 
 function CommentList({comments, showCommentsAfterDelete}){
-
+    //sort comments by created time
+    const sortedComments = comments.sort(
+        (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      );
     return(
         <ul>
-            {comments.map((comment)=>{
+            {sortedComments.map((comment)=>{
                 return <CommentItem key={comment.id} comment={comment} showCommentsAfterDelete={showCommentsAfterDelete}/>;
             })}
         </ul>

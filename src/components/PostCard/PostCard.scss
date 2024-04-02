@@ -1,101 +1,95 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variable" as *;
+@use "../..//styles/partials/global" as *;
 
-@use '../../styles/partials/mixin' as *;
-@use '../../styles/partials/variable' as *;
-@use '../..//styles/partials/global' as *;
-
-
-.posts-list__item{
-    margin: 1%;
-    width: 48%;
-    max-width: 220px;
-    @include tablet{
-        margin: 16px 8px 0;
-    }
+.posts-list__item {
+  margin: 1%;
+  width: 48%;
+  max-width: 13.75rem;
+  @include tablet {
+    margin: 1rem 0.5rem 0;
+  }
 }
 
-.post-card{
+.post-card {
+  width: 100%;
+  padding: 0.3125rem;
+  border: 0.0625rem solid $mercury;
+  border-radius: 0.3125rem;
+
+  @include tablet {
+    width: 14.6875rem;
+    padding: 1rem;
+  }
+  &:hover {
+    background-color: $postCardBackground;
+    box-shadow: 0 0.125rem 0.125rem $mercury;
+  }
+
+  &__image {
     width: 100%;
-    padding: 5px;
-    border: 1px solid $mercury;
-    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 0.25rem;
 
-    @include tablet{
-        width: 235px;
-        padding: 16px;
+    &:hover {
+      cursor: pointer;
     }
-    &:hover{
-        background-color: $postCardBackground;
-        box-shadow: 0 2px 2px $mercury;
-    }
- 
-    &__image{
-        width: 100%;
-        display: block;
-        margin: 0 auto;
-        border-radius: 4px;
+  }
 
-        &:hover{
-            cursor: pointer;
-        }
-    }
+  &__title {
+    color: black;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin: 0.375rem 0;
 
-    &__title{
-        color: black;
-        font-size: 12px;
-        font-weight: 600;
-        margin: 6px 0;
-        
-        @include tablet{
-            font-size: 16px;
-            font-weight: 700;
-            margin: 12px 0;
-        }
-        &:hover{
-            cursor: pointer;
-            text-decoration: underline;
-        }
+    @include tablet {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0.75rem 0;
     }
-
-    .username-collects-wrap{
-        @include flex-space-between;
-
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
     }
+  }
 
-    &__username{
-        font-size: 12px;
-        font-weight: 600;
-        min-width: 95px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        @include tablet{
-            font-size: 16px;
-        }
-    }
+  .username-collects-wrap {
+    @include flex-space-between;
+  }
 
-    .collect-icon-number-wrap{
-        display: flex;
-        align-items: center;
+  &__username {
+    font-size: 0.75rem;
+    font-weight: 600;
+    min-width: 5.9375rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    @include tablet {
+      font-size: 1rem;
     }
+  }
 
-    &__collect-icon{
-        width: 18px;
-        margin-right: 5px;
-        @include tablet{
-            width: 23px;
-            margin-right: 8px;
-        }
-    }
+  .collect-icon-number-wrap {
+    display: flex;
+    align-items: center;
+  }
 
-    &__collect-number{
-        margin-top: 3px;
-        font-size: 11px;
-        font-weight: 600;
-        @include tablet{
-            font-size: 13px;
-        }
+  &__collect-icon {
+    width: 1.125rem;
+    margin-right: 0.3125rem;
+    @include tablet {
+      width: 1.4375rem;
+      margin-right: 0.5rem;
     }
+  }
+
+  &__collect-number {
+    margin-top: 0.1875rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    @include tablet {
+      font-size: 0.8125rem;
+    }
+  }
 }
-
-
-
