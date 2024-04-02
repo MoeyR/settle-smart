@@ -1,0 +1,134 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variable" as *;
+@use "../..//styles/partials/global" as *;
+
+.form {
+  max-width: 41.5625rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1.25rem;
+  background: #efefef;
+  border-radius: 0.5rem;
+  box-shadow: 0.125rem 0.375rem 0.5rem 0.25rem gray;
+  @include tablet {
+    padding: 1.25rem;
+  }
+
+  &-thumbnail-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item-label {
+    color: $mild-black;
+    font-weight: 700;
+    margin-top: 1.25rem;
+  }
+
+  &__label-text {
+    &::after {
+      content: "";
+      display: block;
+      border-bottom: 0.1875rem solid $dark-red;
+      border-radius: 3.125rem;
+      width: 1.875rem;
+    }
+  }
+
+  &__thumbnail-image {
+    width: 60%;
+    display: block;
+    margin: 0.625rem auto;
+    border-radius: 0.5rem;
+    max-width: 15.9375rem;
+  }
+
+  &__thumbnail-upload {
+    display: block;
+    margin: 0 auto;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__item-input,
+  &__item-textarea {
+    margin-top: 0.625rem;
+    &::placeholder {
+      font-family: "Avenir-Next";
+    }
+  }
+
+  &__item-textarea {
+    height: 9.375rem;
+    resize: none;
+    width: 100%;
+    background-color: $white;
+    border: 1px solid #d8d7d7;
+    border-radius: 0.9375rem;
+    padding: 0.625rem 1rem;
+
+    &:focus {
+      border-color: $dark-black;
+      outline: none;
+    }
+
+    &--error-state {
+      border-color: $bright-red;
+    }
+  }
+
+  &__buttons-wrap {
+    margin: 1rem auto;
+  }
+
+  &__post-button,
+  &__cancel-button {
+    font-family: "Avenir-Next";
+    width: 8.005rem;
+    height: 2.3125rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding-top: 0.25rem;
+    margin-top: 0.5rem;
+    margin-right: 0.4375rem;
+    border: 0.0625rem solid lightgray;
+    border-radius: 0.9375rem;
+    background-color: #ffffff;
+    cursor: pointer;
+    @include tablet {
+      width: 8.8175rem;
+      margin-right: 1.5625rem;
+    }
+    &:hover {
+      background-color: $mild-black;
+      box-shadow: 0.125rem 0.125rem 0.125rem grey;
+      border: none;
+    }
+  }
+
+  &__post-button {
+    &:hover {
+      color: $bright-mint;
+    }
+  }
+  &__cancel-button {
+    &:hover {
+      color: $bright-red;
+    }
+  }
+
+  .error-message {
+    padding-top: 0.625rem;
+    margin: 0 auto;
+    color: $dark-red;
+    font-weight: 600;
+  }
+  .success-message {
+    color: green;
+    font-weight: 600;
+    padding: 0.35rem 0 1rem 0;
+  }
+}

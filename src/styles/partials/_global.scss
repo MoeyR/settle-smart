@@ -1,0 +1,58 @@
+@use './mixin' as *;
+@use './variable' as *;
+
+  // ----- Resets ----- //
+*{
+    padding: 0;
+    margin: 0;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+}
+  
+  li {
+    list-style-type: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+
+
+  // ----- Default Styles ----- //
+  body {
+    @include body-font-mobile;
+    @include tablet {
+        @include body-font-tablet;
+    }
+  }
+
+  .default-input {
+    height: 36px;
+    width: 100%;
+    background-color: $white;
+    border: 1px solid #d8d7d7;
+    border-radius: 15px;
+    padding: 10px 16px;
+  
+    &:focus {
+      border-color: $dark-black;
+      outline: none;
+      border-color: $dark-black;
+  
+      &::placeholder {
+        color: $dark-black;
+      }
+    }
+  
+    &--error-state {
+      border-color: $bright-red;
+    }
+  }
+  
+  ::placeholder {
+    color: $slate;
+  }
+  
+    

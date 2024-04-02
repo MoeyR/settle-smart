@@ -1,0 +1,13 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variable" as *;
+@use "../..//styles/partials/global" as *;
+.map-wrap {
+  width: 92%;
+  height: 12.5rem;
+  margin-left: $between-components-mobile;
+  margin-right: $between-components-mobile;
+
+  @include tablet {
+    width: 96%;
+  }
+}

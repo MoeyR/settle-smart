@@ -1,0 +1,106 @@
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variable" as *;
+@use "../..//styles/partials/global" as *;
+
+.posts {
+  min-width: 20rem;
+}
+
+//Nav bar styles
+.nav {
+  width: 100%;
+  @include flex-space-between;
+  color: $mercury;
+  background-color: black;
+  font-size: 0.9375rem;
+  font-weight: 600;
+
+  @include tablet {
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  .nav-list {
+    width: 100%;
+    max-width: 63rem;
+    margin: 0 auto;
+    @include tablet {
+      display: flex;
+      width: 60%;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    &__buttons-wrap {
+      width: 50%;
+      height: 1.875rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 2.8125rem;
+      margin: 0 auto;
+      background: black;
+
+      @include tablet {
+        max-width: 19.6875rem;
+        width: 50%;
+        margin-right: 1.625rem;
+      }
+    }
+
+    &__button {
+      border: none;
+      background: none;
+      color: inherit;
+      font: inherit;
+
+      &:hover {
+        color: $white;
+        cursor: pointer;
+        border-bottom: 0.1875rem solid $dark-red;
+      }
+
+      &--active {
+        color: $white;
+        border-bottom: 0.1875rem solid $dark-red;
+      }
+    }
+
+    &__search-wrap {
+      background-color: $white;
+      padding: 0.625rem $between-components-mobile;
+      @include tablet {
+        width: 50%;
+        background-color: black;
+        padding: $between-components-mobile $between-components-mobile 0.625rem;
+      }
+    }
+
+    &__search-bar {
+      width: 85%;
+      height: 1.625rem;
+      display: block;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 0.0625rem solid #d8d7d7;
+      border-radius: 0.625rem;
+      padding: 0 0.625rem;
+
+      @include tablet {
+        width: 95%;
+        margin: 0;
+        margin-left: 1rem;
+        max-width: 15.625rem;
+      }
+      &:focus {
+        border-color: $dark-black;
+        outline: none;
+        border-color: $dark-black;
+
+        &::placeholder {
+          color: $dark-black;
+        }
+      }
+    }
+  }
+}
