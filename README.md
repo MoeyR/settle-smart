@@ -186,3 +186,23 @@ Any additional features I may complete if I have extra time, or after finishing:
  - Button for collecting posts and put them in user's collections page
  - picture carousels in a post
  - App can be switched to multiple languages such as English, French, Chinese, ...
+
+
+## Installation Guide:
+1. Prerequisites: npm 
+
+2. Installation Steps:
+    - Cloning the repository: git clone <repository-url>
+    - Installing dependencies: npm install 
+
+3. Configuration
+ - Environment variables and API keys:
+ 	REACT_APP_BASE_URL = "value"
+	REACT_APP_GOOGLE_MAP_API_KEY = "value"
+	REACT_APP_MAP_ID = "value"
+
+4. Running the app:
+ - Runs the app in the development mode: npm start
+
+Open http://localhost:3000 to view it in your browser.
+The page will reload when you make changes.
