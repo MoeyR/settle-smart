@@ -31,9 +31,11 @@
     display: block;
     margin: 0 auto;
     border-radius: 0.25rem;
+    transition: 400ms;
 
     &:hover {
       cursor: pointer;
+      transform: scale(1.05);
     }
   }
 

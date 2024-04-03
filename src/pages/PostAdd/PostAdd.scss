@@ -97,15 +97,17 @@
     border: 0.0625rem solid lightgray;
     border-radius: 0.9375rem;
     background-color: #ffffff;
-    cursor: pointer;
+    transition: 600ms;
     @include tablet {
       width: 8.8175rem;
       margin-right: 1.5625rem;
     }
     &:hover {
+      cursor: pointer;
       background-color: $mild-black;
       box-shadow: 0.125rem 0.125rem 0.125rem grey;
       border: none;
+      transform: scale(1.02);
     }
   }
 

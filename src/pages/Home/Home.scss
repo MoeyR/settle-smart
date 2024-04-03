@@ -53,16 +53,27 @@
       background: none;
       color: inherit;
       font: inherit;
+      position: relative;
 
-      &:hover {
-        color: $white;
-        cursor: pointer;
-        border-bottom: 0.1875rem solid $dark-red;
+      &--active::before, &::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -4px;
+        height: 3px;
+        background-color: $bright-red;
+        transition: transform 300ms ease-in-out;
+        transform: scaleX(0);
       }
 
-      &--active {
-        color: $white;
-        border-bottom: 0.1875rem solid $dark-red;
+      &:hover::before, &:focus::before {
+        content: "";
+        transform: scaleX(1);
+      }
+
+      &--active::before {
+        transform: scaleX(1);
       }
     }
 
@@ -85,6 +96,9 @@
       border: 0.0625rem solid #d8d7d7;
       border-radius: 0.625rem;
       padding: 0 0.625rem;
+      background-image: url(../../assets/icons/search.svg);
+      background-repeat: no-repeat;
+      background-position: 95%;
 
       @include tablet {
         width: 95%;
@@ -104,3 +118,5 @@
     }
   }
 }
+
+
