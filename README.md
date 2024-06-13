@@ -58,9 +58,17 @@ All pages of SettleSmart app and brief descriptions:
 ### Mockups
 
 Visuals of SettleSmart app's screens:
-![Pages: Home, PostDetails, CreateNewPost](./src/assets/images/pages-1.jpg)
-![Pages: UserPosts ](./src/assets/images/pages-2.jpg)
+Home Page:
+![Pages: Home](./src/assets/images/Home.jpg)
 
+PostDetails Page:
+![Pages: PostDetails](./src/assets/images/PostDetails.jpg)
+
+CreateNewPost Page:
+![Pages: CreateNewPost](./src/assets/images/CreateNewPost.jpg)
+
+User's Posts Page:
+![Pages: UserPosts ](./src/assets/images/UserPosts.jpg)
 ### Data
 
 Describe of SettleSmart data and the relationships between them:
